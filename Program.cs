@@ -1,15 +1,25 @@
-﻿using Microsoft.Win32.SafeHandles;
+﻿// using Microsoft.Win32.SafeHandles;
 using System;
 
 namespace Csharp_SocialSecurityNumber
 {
     class Program
     {
-        static void Main(string[] args)
+        static int Main(string[] args)
         {
-            Console.Write("Social Security Number (YYMMDD-XXX): ");
-            string socialSecurityNumber = Console.ReadLine();
+            string socialSecurityNumber = string.Empty;
+            if (args.Length > 0)
+            {
+                // if input from terminal is already done
+                Console.WriteLine($"You provided: {args[0]}");
+                socialSecurityNumber = args[0];
+            }
+            else
 
+            {   // Ask for input
+                Console.WriteLine("Please input your Social security number YYMMDD-XXXX");
+                socialSecurityNumber = Console.ReadLine();
+            }
             string gender = "female";
             string pronoun = "her";
             int age = 30;
@@ -36,6 +46,7 @@ namespace Csharp_SocialSecurityNumber
                 age--;
             }
             Console.WriteLine($"The person with this SSN is a { gender}, and {pronoun} age is { age}");
+            return 0;
 
         }
     }
