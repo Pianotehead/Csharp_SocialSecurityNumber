@@ -7,23 +7,14 @@ namespace Csharp_SocialSecurityNumber
     {
         static void Main(string[] args)
         {
-            // INPUT
-            // 1) From the terminal: Csharp_SocialSecurityNumber John Doe 890101-2010
-            // 2) From the terminal: Csharp_SocialSecurityNumber {no parameters}
-            // 3) Run in Visual Studio (same as running it from the terminal with no parameters)
-            // OUTPUT
-            // Name:                   John Doe
-            // Social Security Number: 800101 - 2010
-            // Gender:                 Male
-            // Age:                    31
-            // Generation:             Millennial
+            Console.WriteLine("Usage from the terminal\n");
+            Console.WriteLine("1) Csharp_SocialSecurityNumber John Doe 890101-2010");
+            Console.WriteLine("   If no parameters are entered, the program will ask for them");
+            Console.WriteLine("   If too few parameters are entered, the user will have to type them all over again\n");
             string socialSecurityNumber = string.Empty;
             string firstName = string.Empty;
             string lastName = string.Empty;
 
-
-            // Make it clear to the user, that the input has to be in the correct...
-            // ...format to prevent exception errors
             if (args.Length < 3)
             {
                 if (args.Length > 0)
@@ -51,16 +42,15 @@ namespace Csharp_SocialSecurityNumber
                 lastName = ValidateName(args[1]);
                 socialSecurityNumber = ValidateSSN(args[2]);
             }
-            string gender = "female";
+            string gender = "Female";
             int age = 30;
 
             int genderNumber = int.Parse(socialSecurityNumber.Substring(socialSecurityNumber.Length - 2, 1));
             //Om substring(9, 1), inte bra, inga magiska nummer i koden!
             if (genderNumber % 2 != 0)
             {
-                gender = "male";
+                gender = "Male";
             }
-            int indexYear = 0;
             int startIndex = 0;
             if (socialSecurityNumber.Length == 11)
             {
@@ -83,22 +73,16 @@ namespace Csharp_SocialSecurityNumber
             {
                 age--;
             }
-            string generation = string.Empty;
-            generation = GetGeneration(bornYear);
+            string generation = GetGeneration(bornYear);
+            const int LEFTJUSTIFY = -25;
             // OUTPUT
             Console.Clear();
+            Console.WriteLine($"{"Name:",LEFTJUSTIFY} {firstName} {lastName}");
+            Console.WriteLine($"{"Social Security Number:", LEFTJUSTIFY} { socialSecurityNumber}");
+            Console.WriteLine($"{"Gender:",LEFTJUSTIFY} {gender}");
+            Console.WriteLine($"{"Age:",LEFTJUSTIFY} {age}");
+            Console.WriteLine($"{"Generation:",LEFTJUSTIFY} {generation}");
             Console.SetCursorPosition(0, 20);
-            Console.Write("Name:");
-            Console.CursorLeft = 24;
-            Console.WriteLine($"{firstName} {lastName}");
-            Console.WriteLine($"Social Security Number: {socialSecurityNumber,2}");
-            Console.WriteLine($"Gender: {gender,20}");
-            Console.Write("Age:");
-            Console.CursorLeft = 24;
-            Console.WriteLine(age);
-            Console.CursorLeft = 24;
-            Console.WriteLine(generation);
-            Console.SetCursorPosition(0, 35);
 
         }
 
