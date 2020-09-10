@@ -1,14 +1,14 @@
-## Social Security Number
+# Social Security Number
 
 Console app that lets a user enter a social security number (SSN), 
 upon which the gender and age of the person is reported.
 
-# Getting started
+## Getting started
 
 1. Clone the repository.
 2. Run solution.
 
-# Running the program
+## Running the program
 
 If the app is run from the terminal,
 input must be in one of the following formats:

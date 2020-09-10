@@ -161,7 +161,7 @@ namespace Csharp_SocialSecurityNumber
             {
                 birthDate = DateTime.ParseExact(socialSecurityNumber.Substring(0, 6), "yyMMdd", CultureInfo.CurrentCulture);
                 // With short SSN, I want to assume a person born in the 20th century
-                if (birthDate.Year < 2099 && birthDate.Year > DateTime.Now.Year)
+                if (birthDate > thisDay)
                 {
                     age = thisDay.Year - birthDate.Year + 100;
                 }
