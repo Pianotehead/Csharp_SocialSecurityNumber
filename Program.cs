@@ -132,13 +132,12 @@ namespace Csharp_SocialSecurityNumber
             string expr = @"^(19|20)?\d{2}(01|02|03|04|05|06|07|08|09|10|11|12)((0[1-9])|(1|2)[0-9]|(30|31))-\d{4}$";
             Regex legalSSN = new Regex(expr);
 
-            bool wrongFormatSSN = !legalSSN.IsMatch(socialSecurityNumber);
-            while (wrongFormatSSN)
+            while (!legalSSN.IsMatch(socialSecurityNumber))
             {
-                Console.WriteLine("Your input was not in the correct format. It has to be entered as");
-                Console.WriteLine("either YYMMDD-XXXX or YYYYMMDD-XXXX");
+                Console.WriteLine("Your input was not a legal social security number");
                 Console.Write("Please try again: ");
                 socialSecurityNumber = Console.ReadLine();
+
             }
 
             return socialSecurityNumber;
